@@ -1,0 +1,17 @@
+{
+  "name": "passgen",
+  "version": "1.0.0",
+  "description": "passaword generator",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "caner selcuk",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "electron": "^3.0.0-beta.13",
+    "electron-vibrancy": "^0.1.3",
+    "modules": "^0.4.0",
+    "node-pre-gyp": "^0.11.0"
+  }
+}
