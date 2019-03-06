@@ -11,7 +11,7 @@ function createMainWindow() {
         resizable: true,
         transparent: true,
         frame: false,
-        icon: 'resources/p_g_jcb_icon.ico'
+        icon: 'build/p_g_jcb_icon.ico'
     });
     //var nativeHandleBuffer = mainWindow.getNativeWindowHandle();
     //var electronVibrancy = require(path.join(__dirname,'..','..'));

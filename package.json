@@ -4,7 +4,7 @@
   "description": "passaword generator",
   "productName": "PassGen",
   "main": "main.js",
-  "icon": "./resources/p_g.png",
+  "icon": "build/icon.ico",
   "scripts": {
     "start": "electron .",
     "dist": "build"
@@ -28,7 +28,7 @@
       "appId": "com.passgen.app",
       "win": {
         "target": "nsis",
-        "icon": "./resources/p_g.png"
+        "icon": "build/icon.ico"
       }
     }
   }

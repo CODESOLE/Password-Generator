@@ -237,6 +237,6 @@ body{
     height: 180px;
     margin: 10px;
     float: left;
-    background-image: url('resources/p_g.png');
+    background-image: url('build/p_g.png');
     background-size: cover;
 }
