@@ -237,6 +237,6 @@ body{
     height: 180px;
     margin: 10px;
     float: left;
-    background-image: url('build/icon.png');
+    background-image: url('./res/icon.png');
     background-size: cover;
 }

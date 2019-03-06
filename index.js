@@ -1,6 +1,6 @@
 const {remote} = require('electron');
 
-var aud = new Audio('build/ES_Juarez 1 - Niklas Ahlstrom.mp3');
+var aud = new Audio('./res/ES_Juarez 1 - Niklas Ahlstrom.mp3');
 aud.volume = 0;
 aud.loop = true;
 
@@ -142,7 +142,7 @@ function slide() {
     }
 }
 window.onload = () => {
-    splash.style.backgroundImage = "url('build/welcome_screen.png')";
+    splash.style.backgroundImage = "url('./res/welcome_screen.png')";
     splash.style.width = '150px';
     splash.style.height = '216px';
     splash.style.backgroundSize = 'cover';
@@ -153,7 +153,7 @@ window.onload = () => {
     splash.style.position = 'relative';
     splash.style.transition = '1s';
 
-    heart.style.backgroundImage = "url('build/heart.png')";
+    heart.style.backgroundImage = "url('./res/heart.png')";
     heart.style.backgroundSize = 'cover';
     heart.style.width = '50px';
     heart.style.height = '50px';
