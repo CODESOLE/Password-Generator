@@ -4,6 +4,7 @@
   "description": "passaword generator",
   "productName": "PassGen",
   "main": "main.js",
+  "icon": "resources/p_g_jcb_icon.ico",
   "scripts": {
     "start": "electron .",
     "dist": "build"
