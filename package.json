@@ -1,6 +1,6 @@
 {
   "name": "passgen",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "passaword generator",
   "productName": "PassGen",
   "main": "main.js",
