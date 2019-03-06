@@ -1,0 +1,8 @@
+version: 1.0.0
+files:
+  - url: passgen-setup-1.0.0.exe
+    sha512: 3trPPpMbXOuvQ/rGZWWlv1I8Lc5oOuqerkdtTCzGST2+vMnyDZjPqE1eHfwWZOon/KnVvyP9jBv0IwSJ0MtidA==
+    size: 45185185
+path: passgen-setup-1.0.0.exe
+sha512: 3trPPpMbXOuvQ/rGZWWlv1I8Lc5oOuqerkdtTCzGST2+vMnyDZjPqE1eHfwWZOon/KnVvyP9jBv0IwSJ0MtidA==
+releaseDate: '2019-03-06T18:32:08.920Z'

@@ -6,12 +6,13 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "dist": "build",
     "package-win": "electron-packager . PassGen --overwrite --asar=true --platform=win32 --arch=ia32 --icon=resources/p_g_jcb_icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Password Generator\""
   },
   "author": "caner selcuk",
   "license": "GPL-3.0",
   "dependencies": {
-    "electron": "^3.0.0-beta.13",
+    
     "electron-vibrancy": "^0.1.3",
     "modules": "^0.4.0",
     "node-pre-gyp": "^0.11.0"
@@ -21,6 +22,15 @@
     "url": "git://github.com/CODESOLE/Password-Generator.git"
   },
   "devDependencies": {
-    "electron-packager": "^13.1.1"
+    "electron": "^3.0.0-beta.13",
+    "electron-builder": "^20.38.5",
+    "electron-packager": "^13.1.1",
+    "build": {
+      "appId": "com.passgen.app",
+      "win": {
+        "target": "nsis",
+        "icon": "resources/p_g_jcb_icon.ico"
+      }
+    }
   }
 }
