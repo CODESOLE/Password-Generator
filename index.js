@@ -1,4 +1,7 @@
-const {remote} = require('electron');
+/*jshint esversion: 6 */
+
+const { remote } = require("electron");
+const fs = require("fs");
 
 var aud = new Audio('./res/ES_Juarez 1 - Niklas Ahlstrom.mp3');
 aud.volume = 0;
@@ -7,20 +10,21 @@ aud.loop = true;
 var splash = document.createElement("div");
 var content = document.getElementById("content");
 var heart = document.createElement("div");
+
 document.getElementById("close").addEventListener('click', () => {
     var window = remote.getCurrentWindow();
     window.close();
-})
+});
 
 document.getElementById("max").addEventListener('click', () => {
     var window = remote.getCurrentWindow();
     window.maximize();
-})
+});
 
 document.getElementById("min").addEventListener('click', () => {
     var window = remote.getCurrentWindow();
     window.minimize();
-})
+});
 
 function blur() {
     document.getElementById("close").setAttribute("style", "background-color: rgb(56, 56, 56)");
@@ -43,9 +47,10 @@ function gen() {
     content.style.opacity = 0;
     content.style.transform = 'scale(0.5)';
     setTimeout(() => {
-        content.removeChild(splash);
-        content.removeChild(heart);
-    },500);
+        while (content.firstChild) {
+            content.removeChild(content.firstChild);
+        }
+    }, 500);
     setTimeout(() => {
         var gen_but = document.createElement("div");
         gen_but.style.height = 10 + "px";
@@ -57,12 +62,12 @@ function gen() {
         content.style.opacity = 1;
         content.appendChild(gen_but);
 
-    },600);
-        
-        //document.getElementById("stack").onclick = true;
-        //document.getElementById("about").onclick = true;
-        //this.onclick = false;
-    
+    }, 600);
+
+    //document.getElementById("stack").onclick = true;
+    //document.getElementById("about").onclick = true;
+    //this.onclick = false;
+
 }
 
 function stack() {
@@ -72,13 +77,18 @@ function stack() {
     document.getElementById("stack").setAttribute("style", "border-left: 10px solid rgba(0, 255, 0, 1);");
     document.getElementById("header").innerHTML = document.getElementById("stack").innerHTML.toUpperCase();
 
+    content.style.opacity = 0;
+    content.style.transform = 'scale(0.5)';
+    setTimeout(() => {
+        while (content.firstChild) {
+            content.removeChild(content.firstChild);
+        }
+    }, 500);
 
+    //document.getElementById("gen").onclick = true;
+    //document.getElementById("about").onclick = true;
+    //this.onclick = false;
 
-    
-        //document.getElementById("gen").onclick = true;
-        //document.getElementById("about").onclick = true;
-        //this.onclick = false;
-    
 }
 
 function about() {
@@ -88,13 +98,18 @@ function about() {
     document.getElementById("about").setAttribute("style", "border-left: 10px solid rgba(0, 255, 0, 1);");
     document.getElementById("header").innerHTML = document.getElementById("about").innerHTML.toUpperCase();
 
+    content.style.opacity = 0;
+    content.style.transform = 'scale(0.5)';
+    setTimeout(() => {
+        while (content.firstChild) {
+            content.removeChild(content.firstChild);
+        }
+    }, 500);
 
+    //document.getElementById("gen").onclick = true;
+    //document.getElementById("stack").onclick = true;
+    //this.onclick = false;
 
-    
-        //document.getElementById("gen").onclick = true;
-        //document.getElementById("stack").onclick = true;
-        //this.onclick = false;
-    
 }
 
 function exit() {

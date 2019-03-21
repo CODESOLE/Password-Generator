@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 const { app, BrowserWindow } = require('electron');
 //var electronVibrancy = require("electron-vibrancy")
 let win;
@@ -23,7 +25,7 @@ function createMainWindow() {
         win.loadURL(`file:///${__dirname}/index.html`);
       }, 1000);
 
-    //win.webContents.openDevTools();
+    win.webContents.openDevTools();
 
     //win.loadURL(`file:///${__dirname}/index.html`);
 
