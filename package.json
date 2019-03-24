@@ -12,7 +12,7 @@
   "author": "caner selcuk",
   "license": "GPL-3.0",
   "dependencies": {
-
+    "crypto": "^1.0.1",
     "electron-vibrancy": "^0.1.3",
     "modules": "^0.4.0",
     "node-pre-gyp": "^0.11.0"
