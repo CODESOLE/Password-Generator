@@ -5,28 +5,28 @@ const {
 } = require("electron");
 const fs = require("fs");
 
-var UID = {
-	_current: 0,
-	getNew: function(){
-		this._current++;
-		return this._current;
-	}
-};
+//var UID = {
+//    _current: 0,
+//    getNew: function () {
+//        this._current++;
+//        return this._current;
+//    }
+//};
 
-HTMLElement.prototype.pseudoStyle = function(element,prop,value){
-	var _this = this;
-	var _sheetId = "pseudoStyles";
-	var _head = document.head || document.getElementsByTagName('head')[0];
-	var _sheet = document.getElementById(_sheetId) || document.createElement('style');
-	_sheet.id = _sheetId;
-	var className = "pseudoStyle" + UID.getNew();
-	
-	_this.className +=  " "+className; 
-	
-	_sheet.innerHTML += " ."+className+":"+element+"{"+prop+":"+value+"}";
-	_head.appendChild(_sheet);
-	return this;
-};
+//HTMLElement.prototype.pseudoStyle = function (element, prop, value) {
+//    var _this = this;
+//    var _sheetId = "pseudoStyles";
+//    var _head = document.head || document.getElementsByTagName('head')[0];
+//    var _sheet = document.getElementById(_sheetId) || document.createElement('style');
+//    _sheet.id = _sheetId;
+//    var className = "pseudoStyle" + UID.getNew();
+//
+//    _this.className += " " + className;
+//
+//    _sheet.innerHTML += " ." + className + ":" + element + "{" + prop + ":" + value + "}";
+//    _head.appendChild(_sheet);
+//    return this;
+//};
 
 const lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 const upper = lower.map((letter) => {
@@ -103,16 +103,17 @@ function gen() {
         content.appendChild(checkb);
 
     }, 500);
-    document.getElementById("pass").textContent = "";
-    document.getElementById("pass").style.opacity = 1;
-    document.getElementById("pass").style.marginLeft = '100px';
-    //document.getElementById("stack").onclick = true;
-    //document.getElementById("about").onclick = true;
-    //this.onclick = false;
+    setTimeout(() => {
+        document.getElementById("pass").textContent = "";
+        document.getElementById("pass").style.opacity = 1;
+        document.getElementById("pass").style.marginLeft = '100px';
+    }, 500);
 
 }
 
 function generate() {
+    document.getElementById("pass").style.opacity = 0;
+    document.getElementById("pass").style.marginLeft = '100px';
     const c_upper = document.getElementById("upperCase");
     const c_lower = document.getElementById("lowerCase");
     const c_symbols = document.getElementById("symbols");
@@ -136,16 +137,15 @@ function generate() {
         document.getElementById("pass").style.borderLeft = '5px solid rgb(255, 0, 0)';
         document.getElementById("pass").style.color = 'rgb(255, 0, 0)';
         document.getElementById("pass").textContent = "Please doesnt set character count value to empty or out of 4-99!";
-        document.getElementById("pass").style.opacity = '1';
+        document.getElementById("pass").style.opacity = 1;
         document.getElementById("pass").style.marginLeft = '5px';
+        document.getElementById("save").setAttribute("style", "display: none;");
     } else {
-        document.getElementById("pass").style.opacity = '1';
+        document.getElementById("pass").style.opacity = 1;
         document.getElementById("pass").style.marginLeft = '5px';
         document.getElementById("pass").style.borderLeft = '5px solid rgb(0, 255, 21)';
         document.getElementById("pass").style.color = 'rgb(0, 255, 21)';
 
-       var pass12 = document.getElementById("pass");
-       pass12.pseudoStyle("before", "content", "url('./res/caution.svg')");
         if (boundry == "") {
             chars = `abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ!"#$%&'()*+,-./:;<=>?@[]^_{|}~0123456789`;
         } else {
@@ -161,9 +161,10 @@ function generate() {
             value[i] = chars[Math.floor(rnd[i] / d)];
         }
         document.getElementById("pass").textContent = value.join('');
+        document.getElementById("save").setAttribute("style", "display: inline;");
     }
 
-    document.getElementById("save").setAttribute("style", "display: inline;");
+    
 }
 
 function save() {
@@ -185,9 +186,6 @@ function stack() {
         }
     }, 500);
 
-    //document.getElementById("gen").onclick = true;
-    //document.getElementById("about").onclick = true;
-    //this.onclick = false;
 
 }
 
@@ -206,9 +204,6 @@ function about() {
         }
     }, 500);
 
-    //document.getElementById("gen").onclick = true;
-    //document.getElementById("stack").onclick = true;
-    //this.onclick = false;
 
 }
 
