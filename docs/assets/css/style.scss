@@ -3,6 +3,6 @@
 
 @import "{{ site.theme }}";
 
-#windown::before {
-content: url('./docs/assets/win.svg');
+&:before {
+    content: "merhaba";
 }
