@@ -6,4 +6,4 @@ Executable file is in the dist/win-unpacked/PassGen.exe !
 Program Website is https://codesole.github.io/Password-Generator/
 
 # License
-<a href = "http://www.gnu.org/licenses/gpl.html">GPL-3.0</a>
+<a href = "http://www.gnu.org/licenses/gpl.html" target = "_blank">GPL-3.0</a>
