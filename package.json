@@ -22,14 +22,15 @@
     "url": "git://github.com/CODESOLE/Password-Generator.git"
   },
   "devDependencies": {
-    "electron": "^3.0.0-beta.13",
-    "electron-builder": "^20.38.5",
     "build": {
       "appId": "com.passgen.app",
       "win": {
-        "target": "nsis",
-        "icon": "build/icon.ico"
+        "icon": "build/icon.ico",
+        "target": "nsis"
       }
-    }
+    },
+    "electron": "^3.0.0-beta.13",
+    "electron-builder": "^20.38.5",
+    "eslint": "^5.15.3"
   }
 }
