@@ -84,7 +84,7 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-dist/
-pass_Stack.json
+**/dist
+**/pass_Stack.json
 
 # End of https://www.gitignore.io/api/node
