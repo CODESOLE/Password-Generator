@@ -1,14 +1,16 @@
 /*jshint esversion: 9 */
 const crypto = require("crypto");
 const {
-    remote
+    remote,
+    clipboard
 } = require("electron");
 const fs = require("fs");
 const {
     dialog
 } = require('electron').remote;
 let passwords = {
-    passw: []
+    passw: [],
+    PIN: '160150'
 };
 var isStack = false;
 let isFocus;
@@ -35,7 +37,6 @@ document.getElementById("max").addEventListener('click', () => {
     var window = remote.getCurrentWindow();
     if (window.isMaximized()) {
         window.unmaximize();
-        console.log("unmaximize");
     } else {
         window.maximize();
     }
@@ -62,9 +63,11 @@ function focus() {
 
 function gen() {
     isStack = false;
+    content.style.overflow = 'hidden';
     document.getElementById("stack").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
     document.getElementById("about").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
     document.getElementById("exit").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
+    document.getElementById("PIN").setAttribute("style", "border-left: 0px solid rgba(0, 255, 0, 0);");
     document.getElementById("gen").setAttribute("style", "border-left: 10px solid rgba(0, 255, 0, 1);");
     document.getElementById("header").innerHTML = document.getElementById("gen").innerHTML.toUpperCase();
 
@@ -181,9 +184,7 @@ function decrypt(text) {
 
 function save() {
     let same = '';
-    passwords = {
-        passw: []
-    };
+    passwords.passw = [];
     if (document.getElementById("label").value.trim() == "" || document.getElementById("label").value[0] == ' ') {
         document.getElementById("labelC").style.display = "block";
         document.getElementById("label").value = "";
@@ -229,14 +230,14 @@ function save() {
 }
 
 function stack() {
+    content.style.overflow = 'hidden';
     isStack = true;
     let pinn = [];
-    passwords = {
-        passw: []
-    };
+    passwords.passw = [];
     document.getElementById("gen").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
     document.getElementById("about").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
     document.getElementById("exit").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
+    document.getElementById("PIN").setAttribute("style", "border-left: 0px solid rgba(0, 255, 0, 0);");
     document.getElementById("stack").setAttribute("style", "border-left: 10px solid rgba(0, 255, 0, 1);");
     document.getElementById("header").innerHTML = document.getElementById("stack").innerHTML.toUpperCase();
 
@@ -274,7 +275,7 @@ function stack() {
                         sayac = sayac % 6;
                         console.log(sayac);
                         document.getElementById(`numeros${sayac}`).setAttribute("style", "background-color: rgba(255, 255, 255, 0.5);");
-                        if (pinn.length == 6 && pinn.join('') == '160150') {
+                        if (pinn.length == 6 && pinn.join('') == `${passwords.PIN}`) {
                             document.getElementById(`numeros0`).setAttribute("style", "background-color: rgba(2, 255, 36, 0.5);;");
                             document.getElementById(`numeros1`).setAttribute("style", "background-color: rgba(2, 255, 36, 0.5);;");
                             document.getElementById(`numeros2`).setAttribute("style", "background-color: rgba(2, 255, 36, 0.5);;");
@@ -297,24 +298,24 @@ function stack() {
                                             let data = fs.readFileSync('./pass_Stack.json', 'utf-8');
                                             passwords = JSON.parse(data);
                                             for (let index = 0; index < passwords.passw.length; index++) {
+                                                content.style.overflow = 'auto';
                                                 let list = document.createElement('div');
-                                                list.id = 'list';
+                                                list.classList.add("list");
+                                                list.id = `list${index}`;
                                                 list.innerHTML = `
                                                 <div style="
                                                 width: fit-content;
                                                 height: 10px;
                                                 display: flex;
                                                 margin: 5px;
-                                                padding: 5px;
+                                                padding: 10px;
+                                                color:green;
                                                 user-select: none;
-                                                border-radius: 10px;
+                                                border-radius: 15px;
                                                 align-items: center;
                                                 justify-content: center;
                                                 background-color: rgba(25, 25, 25, 0.5);
-                                                "><span style="
-                                                    color: rgba(0, 255, 0, 1);
-                                                    font-family: sans-serif;
-                                                    font-weight: 600;">${decrypt(passwords.passw[index].label)}</span></div>
+                                                ">${decrypt(passwords.passw[index].label)}</div>
                                                 <div style="
                                                     height: 15px;
                                                     width: inherit;
@@ -322,47 +323,119 @@ function stack() {
                                                     background-color: rgba(25, 25, 25, 0.5);
                                                     color: green;
                                                     margin: 5px;
-                                                    border-radius: 15px;
+                                                    border-radius: 20px;
                                                     align-items: center;
                                                     justify-content: left;
+                                                    overflow: hidden;
                                                     user-select:none;
-                                                    padding: 5px;
-                                                "><span style="
-                                                color: rgba(0, 255, 0, 1);
-                                                font-family: sans-serif;
-                                                font-weight: 600;">${decrypt(passwords.passw[index].pass)}</span></div>
+                                                    padding: 10px;
+                                                ">${decrypt(passwords.passw[index].pass)}</div>
 
                                                 <div style="
-                                                display:flex;
-                                                margin:5px;
-                                                justify-content: left;
-                                                flex-direction:row;
+                                                display: inline-block;
+                                                margin: 3px;
+                                                width: fit-content;
+                                                height: fit-content;
                                                 ">
 
-                                                <div style="
-                                                width:20px;
-                                                height:20px;
-                                                display:flex;
-                                                user-select:none;
-                                                padding:2px;
-                                                border-radius:5px;
+                                                <div class="copy" id="CtC${index}" style="
+                                                width: fit-content;
+                                                height: 20px;
+                                                display: inline-block;
+                                                float: left;
+                                                user-select: none;
+                                                padding: 5px;
+                                                border-radius: 15px;
+                                                margin: 3px;
+                                                overflow:hidden;
+                                                transition:500ms;
                                                 background-color: rgba(25, 25, 25, 0.5);
-                                                "></div>
-                                                <div style="
-                                                width:20px;
-                                                height:20px;
-                                                display:flex;
-                                                user-select:none;
-                                                padding:2px;
-                                                border-radius:5px;
+                                                ">Copy to Clipboard</div>
+                                                <div class="delete" id="dlt${index}" style="
+                                                width: fit-content;
+                                                height: 20px;
+                                                display: inline-block;
+                                                float: left;
+                                                user-select: none;
+                                                padding: 5px;
+                                                transition:500ms;
+                                                border-radius: 15px;
+                                                margin: 3px;
+                                                overflow:hidden;
                                                 background-color: rgba(25, 25, 25, 0.5);
-                                                "></div>
+                                                ">Delete</div>
+                                                <div class="regen" id="RGP${index}" style="
+                                                width: fit-content;
+                                                height: 20px;
+                                                display: inline-block;
+                                                float: left;
+                                                user-select: none;
+                                                padding: 5px;
+                                                transition:500ms;
+                                                border-radius: 15px;
+                                                margin: 3px;
+                                                overflow:hidden;
+                                                background-color: rgba(25, 25, 25, 0.5);
+                                                ">Re-Generate Password</div>
 
                                                 </div>
                                                 `;
                                                 pin.appendChild(list);
                                             }
-                                        } else {
+                                            let dltbtns = document.getElementsByClassName("delete");
+                                            let ctcbtns = document.getElementsByClassName("copy");
+                                            let rgpbtns = document.getElementsByClassName("regen");
+                                            for (let ind = 0; ind < ctcbtns.length; ind++) {
+                                                rgpbtns[ind].onclick = () => {
+                                                    var chrs = `abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ!#$%&()*+,-./:;<=>?@[]^_{|}~0123456789`;
+                                                    var rnd = crypto.randomBytes(parseInt(decrypt(passwords.passw[ind].pass).length, 10));
+                                                    var value = new Array(parseInt(decrypt(passwords.passw[ind].pass).length, 10));
+                                                    var len = Math.min(256, chrs.length);
+                                                    var d = 256 / len;
+
+                                                    for (let i = 0; i < parseInt(decrypt(passwords.passw[ind].pass).length, 10); i++) {
+                                                        value[i] = chrs[Math.floor(rnd[i] / d)];
+                                                    }
+
+                                                    document.getElementById(`list${ind}`).children[1].textContent = value.join('');
+                                                    let data1 = fs.readFileSync('./pass_Stack.json', 'utf-8');
+                                                    passwords = JSON.parse(data1);
+                                                    passwords.passw[ind] = {
+                                                        label: encrypt(document.getElementById(`list${ind}`).children[0].textContent),
+                                                        pass: encrypt(document.getElementById(`list${ind}`).children[1].textContent)
+                                                    };
+                                                    fs.writeFileSync("./pass_Stack.json", JSON.stringify(passwords), "utf-8");
+                                                };
+                                            }
+                                            for (let ind = 0; ind < ctcbtns.length; ind++) {
+                                                ctcbtns[ind].onclick = () => {
+                                                    clipboard.writeText(decrypt(passwords.passw[ind].pass));
+                                                    let a = setTimeout(() => {
+                                                        clipboard.clear();
+                                                    }, 10000);
+                                                    clearTimeout(a);
+                                                };
+                                            }
+
+                                            for (let ind = 0; ind <= dltbtns.length; ind++) {
+                                                dltbtns[ind].onclick = () => {
+                                                    let data1 = fs.readFileSync('./pass_Stack.json', 'utf-8');
+                                                    passwords = JSON.parse(data1);
+                                                    passwords.passw.splice(ind, 1);
+                                                    console.log(passwords.passw);
+                                                    fs.writeFileSync("./pass_Stack.json", JSON.stringify(passwords), "utf-8");
+                                                    pin.removeChild(document.getElementById(`list${ind}`));
+                                                    stack();
+                                                };
+                                            }
+                                        } else if (fs.existsSync('./pass_Stack.json') && passwords.passw == []) {
+                                            console.log(row.style.display);
+                                            row.innerHTML = `<p style = "font-size:20px;font-family: sans-serif;
+                                                                    font-weight: 800;
+                                                                    color: rebeccapurple;">Ooops! Looks like no Saved Password!</p>`;
+                                            pin.appendChild(row);
+                                        } else if (!fs.existsSync('./pass_Stack.json')) {
+                                            console.log(row.style.display);
                                             row.innerHTML = `<p style = "font-size:20px;font-family: sans-serif;
                                                                     font-weight: 800;
                                                                     color: rebeccapurple;">Ooops! Looks like no Saved Password!</p>`;
@@ -373,7 +446,7 @@ function stack() {
                             }, 500);
                             pinn = [];
                             sayac = -1;
-                        } else if (pinn.length == 6 && pinn.join('') != '160150') {
+                        } else if (pinn.length == 6 && pinn.join('') != `${passwords.PIN}`) {
                             let errr = document.createElement('div');
                             errr.id = 'errr';
                             errr.innerText = "Wrong PIN!";
@@ -411,11 +484,97 @@ function stack() {
     }, 500);
 }
 
+function PIN() {
+    isStack = false;
+    content.style.overflow = 'hidden';
+    document.getElementById("gen").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
+    document.getElementById("about").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
+    document.getElementById("exit").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
+    document.getElementById("stack").setAttribute("style", "border-left: 0px solid rgba(0, 255, 0, 0);");
+    document.getElementById("PIN").setAttribute("style", "border-left: 10px solid rgba(0, 255, 0, 1);");
+    document.getElementById("header").innerHTML = document.getElementById("PIN").innerHTML.toUpperCase();
+
+    content.style.opacity = 0;
+    content.style.transform = 'scale(0.5)';
+    setTimeout(() => {
+        while (content.firstChild) {
+            content.removeChild(content.firstChild);
+        }
+        let cPIN = document.createElement('div');
+        cPIN.innerHTML = `
+        <input type="number" id="label1" maxlength="6" class="label" aria-multiline="false" autofocus= true placeholder="CURRENT 6 CHARACTER PIN">
+        <input type="number" id="label2" maxlength="6" class="label" aria-multiline="false" autofocus= true placeholder="NEW 6 CHARACTER PIN">
+        <input type="number" id="label3" maxlength="6" class="label" aria-multiline="false" autofocus= true placeholder="VERIFY 6 CHARACTER NEW PIN">
+        <button id="set" class="source" onclick="setPIN()" style="color: black;
+            border-radius: 20px;
+            border-width: 1px;
+            border-color: rgba(255, 255, 255, 0.2);
+            border-style: solid;
+            display:flex;
+            justify-content:center;
+            flex-direction:row;
+            width:250px;
+            height:36px;
+            align-item:center;
+            margin:auto;
+            transition: 250ms;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font: 900;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);"><span style= "text-align: center;margin: auto;">SET NEW PIN</span></button>
+        `;
+
+        cPIN.style.display = 'flex';
+        cPIN.style.justifyContent = 'center';
+        cPIN.style.alignItems = 'center';
+        cPIN.style.flexDirection = 'column';
+        content.style.transform = 'scale(1.0)';
+        content.style.opacity = 1;
+        content.appendChild(cPIN);
+        document.getElementById('set').onclick = () => {
+            if (document.getElementById('label1').value == passwords.PIN && document.getElementById('label2').value == document.getElementById('label3').value && document.getElementById('label1').value.length == 6 && document.getElementById('label2').value.length == 6 && document.getElementById('label3').value.length == 6) {
+
+                if (fs.existsSync('./pass_Stack.json')) {
+                    let data = fs.readFileSync("./pass_Stack.json", "utf-8");
+                    passwords = JSON.parse(data);
+                    passwords.PIN = document.getElementById('label2').value;
+                    fs.writeFileSync('./pass_Stack.json', JSON.stringify(passwords), 'utf-8');
+                } else {
+                    passwords.PIN = document.getElementById('label2').value;
+                }
+
+                document.getElementById('label1').value = '';
+                document.getElementById('label2').value = '';
+                document.getElementById('label3').value = '';
+                let errr2 = document.createElement('div');
+                errr2.id = 'errr2';
+                errr2.style.color = 'rgb(0, 255, 0)';
+                errr2.innerText = "PIN successfully changed!";
+                cPIN.appendChild(errr2);
+                setTimeout(() => {
+                    cPIN.removeChild(errr2);
+                }, 3000);
+            } else {
+                let errr2 = document.createElement('div');
+                errr2.id = 'errr2';
+                errr2.style.color = 'red';
+                errr2.innerText = "Your entered PIN didn't current PIN or your new PIN couldn't match or you didn't enter 6 character PIN!";
+                cPIN.appendChild(errr2);
+                setTimeout(() => {
+                    cPIN.removeChild(errr2);
+                }, 10000);
+            }
+        };
+    }, 500);
+}
+
 function about() {
+    content.style.overflow = 'hidden';
     isStack = false;
     document.getElementById("stack").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
     document.getElementById("gen").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
     document.getElementById("exit").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
+    document.getElementById("PIN").setAttribute("style", "border-left: 0px solid rgba(0, 255, 0, 0);");
     document.getElementById("about").setAttribute("style", "border-left: 10px solid rgba(0, 255, 0, 1);");
     document.getElementById("header").innerHTML = document.getElementById("about").innerHTML.toUpperCase();
 
@@ -440,11 +599,16 @@ function about() {
             border-width: 1px;
             border-color: rgba(255, 255, 255, 0.2);
             border-style: solid;
+            display:flex;
+            justify-content:center;
+            flex-direction:row;
+            align-item:center;
+            margin:auto;
             transition: 250ms;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font: 900;
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-            background-color: rgba(255, 255, 255, 0.1);"><span style= "text-align: center;margin: auto;">View Source Code on Github</span></button> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+            background-color: rgba(255, 255, 255, 0.1);"><span style= "text-align: center;margin: auto;">View Source Code on Github</span></button> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
             <h6 style="color: #b0b4b485">Developed by caner selcuk</h6>
         </p>
     </h3>
@@ -466,6 +630,7 @@ function exit() {
     document.getElementById("stack").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
     document.getElementById("about").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
     document.getElementById("gen").setAttribute("style", "border-left: 0px rgba(0, 255, 0, 0);");
+    document.getElementById("PIN").setAttribute("style", "border-left: 0px solid rgba(0, 255, 0, 0);");
     document.getElementById("exit").setAttribute("style", "border-left: 10px solid rgba(0, 255, 0, 1);");
     var window = remote.getCurrentWindow();
     window.close();
@@ -494,7 +659,6 @@ function slide() {
         document.getElementById("cont").setAttribute("style", "background-color: rgba(255, 255, 255, 0.623)");
         var fout = setInterval(() => {
             aud.volume -= 0.05;
-            //console.log(aud.volume);
             if (aud.volume <= 0.0 || aud.volume == 0.049999999999999684) {
                 aud.volume = 0;
                 clearInterval(fout);
@@ -506,6 +670,10 @@ function slide() {
     }
 }
 window.onload = () => {
+    if (fs.existsSync('./pass_Stack.json')) {
+        passwords = JSON.parse(fs.readFileSync('./pass_Stack.json', 'utf-8'));
+    }
+
     splash.style.backgroundImage = "url('./res/welcome_screen.png')";
     splash.style.width = 'auto';
     splash.style.height = '100%';

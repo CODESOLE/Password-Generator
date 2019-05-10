@@ -18,11 +18,11 @@ function createMainWindow() {
         icon: 'build/icon.ico'
     });
 
-        electronVibrancy.SetVibrancy(win, 5);
+    electronVibrancy.SetVibrancy(win, 5);
 
     setTimeout(() => {
         win.loadURL(`file:///${__dirname}/index.html`);
-      }, 100);
+    }, 100);
 
     win.webContents.openDevTools();
 

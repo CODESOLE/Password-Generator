@@ -187,10 +187,11 @@ body {
 }
 
 #content {
-    width: inherit;
+    width: -webkit-fill-available;
     height: inherit;
     padding: 3px;
     margin: 0px;
+    overflow: hidden;
     align-content: center;
     transition: 500ms;
 }
@@ -219,7 +220,7 @@ body {
 
 #swcon {
     position: relative;
-    margin-top: 150px;
+    margin-top: 100px;
     margin-left: 0px;
     width: 100%;
     height: fit-content;
@@ -446,6 +447,26 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     transition: 1000ms ease-in-out;
 }
 
+.label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    height: 28px;
+    width: 250px;
+    padding: 3px;
+    margin: 40px;
+    border-radius: 19px;
+    border: 2px solid rgba(139, 139, 139, .3);
+    transition: 500ms ease-in-out;
+}
+
+.label:focus {
+    background-color: #12bbd4;
+    border: 2px solid #e9a1ff;
+    font: bold;
+}
+
 #label:focus {
     background-color: #12bbd4;
     border: 2px solid #e9a1ff;
@@ -462,7 +483,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     content: url("./res/GitHub-Mark-32px.png");
     width: 32px;
     height: 32px;
-    margin: auto;
+    margin: 3px;
 }
 
 #source:hover {
@@ -472,13 +493,19 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     transform: scale(1.03);
 }
 
+.source:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #fff;
+    background-color: rgba(255, 255, 255, 0.774);
+    transform: scale(1.03);
+}
+
 #pin {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-self: center;
     flex-direction: column;
-    width: 100%;
-    overflow: auto;
+    width: -webkit-fill-available;
+    margin: 10px;
     height: 100%;
 }
 
@@ -510,7 +537,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     transition: 250ms;
     width: fit-content;
     height: 20px;
-    margin-top: 50px;
+    margin: auto;
     padding: 3px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font: 900;
@@ -518,15 +545,67 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-#list {
+#errr2 {
+    color: rgb(0, 255, 0);
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.2);
+    border-style: solid;
+    transition: 250ms;
+    width: fit-content;
+    height: fit-content;
+    margin: 10px;
+    padding: 3px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font: 900;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.list {
     height: fit-content;
     width: inherit;
     background-color: rgba(37, 37, 37, 0.5);
     border-radius: 10px;
-    margin: 5px;
     flex-direction: column;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    transition: 1s;
     padding: 5px;
+    margin: 5px;
+}
+
+#PIN {
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0);
+    color: rgb(0, 255, 0);
+    height: 40px;
+    text-align: center;
+    font-size: 25px;
+    transition: 0.5s;
+    margin-top: 10px;
+    font-weight: 500;
+    overflow: hidden;
+    user-select: none;
+}
+
+#PIN:hover {
+    background-color: rgba(240, 248, 255, 0.1);
+    cursor: default;
+}
+
+.copy:hover {
+    background-color: rgba(150, 148, 148, 0.5);
+    cursor: pointer;
+}
+
+.regen:hover {
+    background-color: rgba(150, 148, 148, 0.5);
+    cursor: pointer;
+}
+
+.delete:hover {
+    background-color: rgba(150, 148, 148, 0.5);
+    cursor: pointer;
 }
