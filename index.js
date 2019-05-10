@@ -422,20 +422,17 @@ function stack() {
                                                     let data1 = fs.readFileSync('./pass_Stack.json', 'utf-8');
                                                     passwords = JSON.parse(data1);
                                                     passwords.passw.splice(ind, 1);
-                                                    console.log(passwords.passw);
                                                     fs.writeFileSync("./pass_Stack.json", JSON.stringify(passwords), "utf-8");
                                                     pin.removeChild(document.getElementById(`list${ind}`));
-                                                    stack();
+                                                    gen();
                                                 };
                                             }
                                         } else if (fs.existsSync('./pass_Stack.json') && passwords.passw == []) {
-                                            console.log(row.style.display);
                                             row.innerHTML = `<p style = "font-size:20px;font-family: sans-serif;
                                                                     font-weight: 800;
                                                                     color: rebeccapurple;">Ooops! Looks like no Saved Password!</p>`;
                                             pin.appendChild(row);
                                         } else if (!fs.existsSync('./pass_Stack.json')) {
-                                            console.log(row.style.display);
                                             row.innerHTML = `<p style = "font-size:20px;font-family: sans-serif;
                                                                     font-weight: 800;
                                                                     color: rebeccapurple;">Ooops! Looks like no Saved Password!</p>`;
