@@ -24,7 +24,7 @@ function createMainWindow() {
         win.loadURL(`file:///${__dirname}/index.html`);
     }, 100);
 
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
     //win.loadURL(`file:///${__dirname}/index.html`);
 
