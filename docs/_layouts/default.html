@@ -24,7 +24,7 @@
       timeAgo = (dateDiff / oneDay).toFixed(1) + " days ago";
     }
     var releaseInfo = release.name + " was updated " + timeAgo + " and downloaded " + downloadCount.toLocaleString() + " times.";
-    $(".btn").attr("href", asset.browser_download_url);
+    $(".btn").attr("href", "https://github.com/CODESOLE/Password-Generator/releases/download/v0.1/dist.rar");
     $(".release-info").text(releaseInfo);
     $(".release-info").fadeIn("slow");
   });
