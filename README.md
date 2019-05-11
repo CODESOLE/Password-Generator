@@ -1,7 +1,9 @@
 # Password-Generator
 password generator with nice UI (This project is in the design stage. WIP)
 
-Executable file is in the dist/win-unpacked/PassGen.exe !
+Executable file is in the release => dist.rar !
+
+You can also download file from program website !
 
 Program Website is https://codesole.github.io/Password-Generator/
 
