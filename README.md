@@ -1,5 +1,6 @@
 # Password-Generator
-password generator with nice UI (This project is in the design stage. WIP)
+password generator with nice UI.
+
 
 Executable file is in the release => dist.rar !
 
