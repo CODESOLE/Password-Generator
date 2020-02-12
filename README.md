@@ -6,6 +6,8 @@ Executable file is in the release => dist.rar !
 
 You can also download file from program website !
 
+Showcase video => https://youtu.be/D9wB_IvdviY
+
 Program Website is https://codesole.github.io/Password-Generator/
 
 # License
