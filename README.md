@@ -11,8 +11,6 @@ You can also download file from program website !
 
 At first execution default password access PIN is : 160150
 
-Showcase video => https://youtu.be/D9wB_IvdviY
-
 Program Website is https://codesole.github.io/Password-Generator/
 
 # License
