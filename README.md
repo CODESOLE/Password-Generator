@@ -1,6 +1,7 @@
 # Password-Generator
 password generator with nice UI.
 
+![](https://github.com/CODESOLE/Password-Generator/blob/master/res/PasswordGenerator.gif)
 
 Executable file is in the release => dist.rar !
 
