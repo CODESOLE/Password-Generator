@@ -1,0 +1,611 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#Big {
+    padding: 0%;
+    margin: 0%;
+    width: inherit;
+    height: inherit;
+}
+
+#leftSide {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    width: 200px;
+    height: 600px;
+    background-color: rgba(5, 5, 5, 0.712);
+    float: left;
+    overflow: hidden;
+}
+
+#rightSide {
+    width: auto;
+    height: 600px;
+    background-color: rgba(168, 168, 168, 0.712);
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 0 px;
+    margin-left: 200px;
+    align-content: center;
+}
+
+#top {
+    height: 25px;
+    width: 100%;
+    margin: 0px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.479);
+    -webkit-app-region: drag;
+    border-top-left-radius: 5px;
+    box-shadow: 0px 3px 20px 2px rgb(0, 0, 0);
+}
+
+#top2 {
+    height: 25px;
+    width: 100%;
+    margin: 0px;
+    z-index: 1;
+    background-color: rgba(168, 168, 168, 0.459);
+    -webkit-app-region: drag;
+    border-top-right-radius: 5px;
+    box-shadow: 0px 3px 20px 2px rgba(0, 0, 0, 0.212);
+}
+
+#close {
+    background-color: red;
+    border-radius: 7px;
+    margin: 5px;
+    height: 14px;
+    width: 14px;
+    float: left;
+    -webkit-app-region: no-drag;
+    transition: 0.25s;
+}
+
+#max {
+    float: left;
+    background-color: yellow;
+    border-radius: 7px;
+    margin: 5px;
+    height: 14px;
+    width: 14px;
+    -webkit-app-region: no-drag;
+    transition: 0.25s;
+}
+
+#min {
+    float: left;
+    background-color: rgb(0, 255, 0);
+    border-radius: 7px;
+    margin: 5px;
+    height: 14px;
+    width: 14px;
+    -webkit-app-region: no-drag;
+    transition: 0.25s;
+}
+
+#close:hover {
+    box-shadow: 0px 0px 10px 3px rgba(255, 0, 0, 1);
+    cursor: pointer;
+}
+
+#max:hover {
+    box-shadow: 0px 0px 10px 3px rgba(229, 255, 0, 1);
+    cursor: pointer;
+}
+
+#min:hover {
+    box-shadow: 0px 0px 10px 3px rgba(0, 255, 0, 1);
+    cursor: pointer;
+}
+
+#gen {
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0);
+    color: rgb(0, 255, 0);
+    height: 40px;
+    text-align: center;
+    font-size: 25px;
+    transition: 0.5s;
+    margin-top: 0px;
+    font-weight: 500;
+    overflow: hidden;
+    user-select: none;
+}
+
+#stack {
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0);
+    color: rgb(0, 255, 0);
+    height: 40px;
+    text-align: center;
+    font-size: 25px;
+    transition: 0.5s;
+    margin-top: 10px;
+    font-weight: 500;
+    overflow: hidden;
+    user-select: none;
+}
+
+#about {
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0);
+    color: rgb(0, 255, 0);
+    height: 40px;
+    text-align: center;
+    font-size: 25px;
+    transition: 0.5s;
+    margin-top: 10px;
+    font-weight: 500;
+    overflow: hidden;
+    user-select: none;
+}
+
+#exit {
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0);
+    color: rgb(0, 255, 0);
+    height: 40px;
+    text-align: center;
+    font-size: 25px;
+    transition: 0.5s;
+    margin-top: 10px;
+    font-weight: 500;
+    overflow: hidden;
+    user-select: none;
+}
+
+#exit:hover {
+    background-color: rgba(240, 248, 255, 0.1);
+    cursor: default;
+}
+
+#about:hover {
+    background-color: rgba(240, 248, 255, 0.1);
+    cursor: default;
+}
+
+#stack:hover {
+    background-color: rgba(240, 248, 255, 0.1);
+    cursor: default;
+}
+
+#gen:hover {
+    background-color: rgba(240, 248, 255, 0.1);
+    cursor: default;
+}
+
+#placHold {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+#content {
+    width: -webkit-fill-available;
+    height: inherit;
+    padding: 3px;
+    margin: 0px;
+    overflow: hidden;
+    align-content: center;
+    transition: 500ms;
+}
+
+#header {
+    margin: auto;
+    color: black;
+    width: fit-content;
+    height: fit-content;
+    padding: 3px;
+    font-weight: 700;
+    user-select: none;
+}
+
+#ver {
+    margin-top: 3px;
+    margin-left: 6px;
+    color: rgb(0, 255, 0);
+    width: fit-content;
+    height: fit-content;
+    font-size: 15px;
+    float: left;
+    font-weight: 700;
+    -webkit-user-select: none;
+}
+
+#swcon {
+    position: relative;
+    margin-top: 100px;
+    margin-left: 0px;
+    width: 100%;
+    height: fit-content;
+    float: left;
+}
+
+#switch {
+    color: rgb(0, 255, 0);
+    width: fit-content;
+    height: fit-content;
+    font-size: 20px;
+    float: left;
+    font-weight: 700;
+    margin-left: 10px;
+    user-select: none;
+}
+
+#cont {
+    float: left;
+    width: 40px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.623);
+    border-radius: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#btn {
+    float: left;
+    height: 18px;
+    width: 18px;
+    margin: 1px;
+    border-radius: 9px;
+    background-color: rgba(5, 5, 5, 0.432);
+    transition: 250ms;
+}
+
+#logo {
+    width: 180px;
+    height: 180px;
+    margin: 10px;
+    float: left;
+    background-image: url('./res/icon.png');
+    background-size: cover;
+}
+
+.container {
+    max-width: 640px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+}
+
+ul.ks-cboxtags {
+    list-style: none;
+    padding: 20px;
+}
+
+ul.ks-cboxtags li {
+    display: inline;
+}
+
+ul.ks-cboxtags li label {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+ul.ks-cboxtags li label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked+label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked+label {
+    border: 2px solid #1bdbf8;
+    background-color: #12bbd4;
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+    display: absolute;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:focus+label {
+    border: 2px solid #e9a1ff;
+}
+
+#number {
+    height: 28px;
+    width: 200px;
+    padding: 3px;
+    border-radius: 19px;
+    border: 2px solid rgba(139, 139, 139, .3);
+    transition: 500ms ease-in-out;
+}
+
+#number:focus {
+    background-color: #12bbd4;
+    border: 2px solid #e9a1ff;
+    font: bold;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 40px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 25px;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    user-select: none;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+#save {
+    display: none;
+}
+
+#pass {
+    margin-left: 100px;
+    opacity: 0;
+    background-color: rgb(27, 27, 27);
+    border-left: 5px solid rgb(255, 0, 0);
+    border-radius: 3px;
+    color: #ff0000;
+    font: bolder;
+    white-space: nowrap;
+    margin-top: 3px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: .3s;
+    width: fit-content;
+    height: 40px;
+    padding: 3px;
+}
+
+#pass::before {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    padding: 3px;
+    content: url("./res/caution.svg");
+}
+
+#label {
+    display: none;
+    opacity: 0;
+    margin-left: 100px;
+    margin-bottom: 5px;
+    height: 28px;
+    width: 200px;
+    padding: 3px;
+    margin-top: 3px;
+    border-radius: 19px;
+    border: 2px solid rgba(139, 139, 139, .3);
+    transition: 1000ms ease-in-out;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    height: 28px;
+    width: 250px;
+    padding: 3px;
+    margin: 40px;
+    border-radius: 19px;
+    border: 2px solid rgba(139, 139, 139, .3);
+    transition: 500ms ease-in-out;
+}
+
+.label:focus {
+    background-color: #12bbd4;
+    border: 2px solid #e9a1ff;
+    font: bold;
+}
+
+#label:focus {
+    background-color: #12bbd4;
+    border: 2px solid #e9a1ff;
+    font: bold;
+}
+
+#labelC {
+    display: none;
+    margin: 5px;
+    color: #ff0000;
+}
+
+#source::before {
+    content: url("./res/GitHub-Mark-32px.png");
+    width: 32px;
+    height: 32px;
+    margin: 3px;
+}
+
+#source:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #fff;
+    background-color: rgba(255, 255, 255, 0.774);
+    transform: scale(1.03);
+}
+
+.source:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #fff;
+    background-color: rgba(255, 255, 255, 0.774);
+    transform: scale(1.03);
+}
+
+#pin {
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    width: -webkit-fill-available;
+    margin: 10px;
+    height: 100%;
+}
+
+#row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+.numeros {
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    border-width: 3px;
+    background-color: rgba(255, 255, 255, 0);
+    transition: 500ms;
+    border-color: rgba(255, 255, 255, 0.25);
+    border-style: solid;
+}
+
+#errr {
+    color: red;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.2);
+    border-style: solid;
+    transition: 250ms;
+    width: fit-content;
+    height: 20px;
+    margin: auto;
+    padding: 3px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font: 900;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#errr2 {
+    color: rgb(0, 255, 0);
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.2);
+    border-style: solid;
+    transition: 250ms;
+    width: fit-content;
+    height: fit-content;
+    margin: 10px;
+    padding: 3px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font: 900;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.list {
+    height: fit-content;
+    width: inherit;
+    background-color: rgba(37, 37, 37, 0.5);
+    border-radius: 10px;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transition: 1s;
+    padding: 5px;
+    margin: 5px;
+}
+
+#PIN {
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0);
+    color: rgb(0, 255, 0);
+    height: 40px;
+    text-align: center;
+    font-size: 25px;
+    transition: 0.5s;
+    margin-top: 10px;
+    font-weight: 500;
+    overflow: hidden;
+    user-select: none;
+}
+
+#PIN:hover {
+    background-color: rgba(240, 248, 255, 0.1);
+    cursor: default;
+}
+
+.copy:hover {
+    background-color: rgba(150, 148, 148, 0.5);
+    cursor: pointer;
+}
+
+.regen:hover {
+    background-color: rgba(150, 148, 148, 0.5);
+    cursor: pointer;
+}
+
+.delete:hover {
+    background-color: rgba(150, 148, 148, 0.5);
+    cursor: pointer;
+}

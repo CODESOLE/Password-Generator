@@ -1,0 +1,38 @@
+{
+  "name": "passgen",
+  "version": "0.0.1",
+  "description": "passaword generator",
+  "productName": "PassGen",
+  "main": "main.js",
+  "icon": "build/icon.ico",
+  "scripts": {
+    "start": "electron .",
+    "dist": "build"
+  },
+  "author": "caner selcuk",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "electron-vibrancy": "^0.1.3",
+    "modules": "^0.4.0",
+    "node-pre-gyp": "^0.11.0",
+    "minimist": ">=1.2.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CODESOLE/Password-Generator.git"
+  },
+  "devDependencies": {
+    "build": {
+      "appId": "com.passgen.app",
+      "win": {
+        "icon": "build/icon.ico",
+        "target": "nsis"
+      }
+    },
+    "electron": "^11.5.0",
+    "electron-builder": "^20.38.5",
+    "eslint": "^5.15.3",
+    "minimist": ">=1.2.3"
+  }
+}
