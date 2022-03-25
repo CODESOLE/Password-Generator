@@ -30,7 +30,7 @@
         "target": "nsis"
       }
     },
-    "electron": "^11.5.0",
+    "electron": "^13.6.6",
     "electron-builder": "^20.38.5",
     "eslint": "^5.15.3",
     "minimist": ">=1.2.3"
